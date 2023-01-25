@@ -155,7 +155,7 @@ const products = [
   {
     name: 'Batata Inglesa',
     price: 1.20,
-    thumbnail: './images/products/greens/batata-inglesa.webp',
+    thumbnail: './images/products/vegetables/batata-inglesa.webp',
     category: 'vegetables',
   },
   {
@@ -300,7 +300,7 @@ const products = [
   {
     name: 'Leite de Aveia',
     price: 21.69,
-    thumbnail: './images/products/vegetables/leite-de-aveia.webp',
+    thumbnail: './images/products/organics/leite-de-aveia.webp',
     category: 'organics',
   },
   {
@@ -419,12 +419,6 @@ const products = [
     category: 'drinks',
   },
   {
-    name: 'Ketchup',
-    price: 23.99,
-    thumbnail: './images/products/drinks/ketchup.webp',
-    category: 'drinks',
-  },
-  {
     name: 'Suco de Laranja 1L',
     price: 14.99,
     thumbnail: './images/products/drinks/suco-laranja.webp',
@@ -451,7 +445,7 @@ const products = [
   {
     name: 'Suco Laranja Natural 1.7L',
     price: 23.99,
-    thumbnail: './images/products/drinks/ketchup.webp',
+    thumbnail: './images/products/drinks/suco-laranja-natural.webp',
     category: 'drinks',
   },
   {
@@ -517,7 +511,7 @@ const products = [
   {
     name: 'Pão Francês',
     price: 1.25,
-    thumbnail: './images/products/drinks/pao-frances.webp',
+    thumbnail: './images/products/bakery/pao-frances.webp',
     category: 'bakery',
   },
   // BAKERY

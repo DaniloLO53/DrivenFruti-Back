@@ -4,11 +4,26 @@ import db from "../server.js";
 async function updateCart(request, response) {
   const { authorization } = request.headers;
   const { newIds } = request.body;
+  const token = authorization?.replace('Bearer ', '');
 
   try {
-    console.log(newIds);
+    const session = await db.collection('sessions').findOne({ token });
 
-    return response.status(201).send(newIds);
+    if (!session || !token) {
+      return response.status(401).send('Não autorizado');
+    };
+
+    await db.collection('users').updateOne(
+      { _id: ObjectId(session.usuarioId) },
+      {
+        $set: { cartIds: newIds },
+      },
+      { upsert: true },
+    )
+
+    const user = await db.collection('users').findOne({ _id: ObjectId(session.usuarioId) });
+
+    return response.status(201).send(user);
   } catch (error) {
     console.log('error: ', error);
 
@@ -18,7 +33,8 @@ async function updateCart(request, response) {
 
 async function getCart(request, response) {
   const { authorization } = request.headers;
-  console.log('token:', authorization)
+  const token = authorization?.replace('Bearer ', '');
+  // console.log('token:', authorization)
 
   try {
     const users = await db.collection('users').find({}).toArray();
@@ -26,13 +42,14 @@ async function getCart(request, response) {
     const sessions = await db.collection('sessions').find({}).toArray();
     console.log('sessions: ', sessions);
 
-    const session = await db.collection('sessions').findOne({ token: authorization });
+    const session = await db.collection('sessions').findOne({ token });
     console.log('Session: ', session)
-    const user = await db.collection('users').findOne({ _id: ObjectId(session.usuarioId) });
+    const user = await db.collection('users').findOne({ _id: session.usuarioId });
+    console.log('user: ', user)
 
     if (!session || !user) return response.sendStatus(403);
 
-    if (!user.cart) {
+    if (!user.cartIds) {
       user.cartIds = [];
     };
 

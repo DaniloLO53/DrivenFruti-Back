@@ -1,4 +1,4 @@
-import db from "../db/db.js";
+import db from "../server.js";
 import { v4 as uuidV4 } from "uuid";
 
 export async function signIn(req, res) {

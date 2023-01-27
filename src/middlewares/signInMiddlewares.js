@@ -1,20 +1,18 @@
 import bcrypt from "bcrypt";
-import db from "../db/db.js";
+import db from "../server.js";
 
 export async function signInValidation(req, res, next) {
   const { email, password } = req.body;
 
   try {
     const user = await db.collection("users").findOne({ email });
-
     if (!user) {
       return res.sendStatus(401);
     }
-    const passwordHash = bcrypt.compareSync(String(password), user.password);
+    const passwordHash = bcrypt.compareSync(password, user.password);
     if (!passwordHash) {
       return res.sendStatus(401);
     }
-    console.log('OK')
     res.locals.user = user;
 
   } catch (err) {

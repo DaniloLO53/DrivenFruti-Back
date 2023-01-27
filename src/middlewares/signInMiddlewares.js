@@ -9,6 +9,7 @@ export async function signInValidation(req, res, next) {
     if (!user) {
       return res.sendStatus(401);
     }
+
     const passwordHash = bcrypt.compareSync(password, user.password);
     if (!passwordHash) {
       return res.sendStatus(401);

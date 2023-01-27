@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import db from "../db/db.js";
+import db from "../server.js";
 
 export async function signInValidation(req, res, next) {
   const { email, password } = req.body;

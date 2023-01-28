@@ -34,7 +34,7 @@ async function updateCart(request, response) {
 async function getCart(request, response) {
   const { authorization } = request.headers;
   const token = authorization?.replace('Bearer ', '');
-  // console.log('token:', authorization)
+  console.log('token:', authorization)
 
   try {
     const users = await db.collection('users').find({}).toArray();

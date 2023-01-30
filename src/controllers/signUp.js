@@ -3,9 +3,9 @@ import joi from "joi";
 import bcrypt from "bcrypt";
 
 const signUpSchema = joi.object({
-    name: joi.string().required(),
+    name: joi.string().required().min(3),
     email: joi.string().email().required(),
-    password: joi.string().required()
+    password: joi.string().required().min(6)
 });
 
 export async function signUp(req, res){

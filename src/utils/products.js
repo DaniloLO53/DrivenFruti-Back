@@ -467,7 +467,7 @@ const products = [
     category: 'drinks',
   },
   {
-    name: 'Suco de Auva Sem Açucar 200ML',
+    name: 'Suco de Uva Sem Açucar 200ML',
     price: 3.79,
     thumbnail: './images/products/drinks/suco-uva-sem-açucar.webp',
     category: 'drinks',
